@@ -29,20 +29,26 @@ In general, 7Cal follows the same principle: it is arranged so that the largest 
 
     +0
 
-7Cal at the date and time of this version's write-up (see above) specifies no specific date and time on the Gregorian with which the year offset +0 synchronizes. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
+7Cal at the date and time of the version of this write-up (see above) makes no specific demands with which date and time on the Gregorian the offset +0 synchronizes, except that it must be on a Sunday at midnight according to the UTC time zone. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
 
 The next year on the 7Cal calendar is then:
 
     +1
 
-After the year are placed the terms that signify one ore more full days. There are one or more terms, separated by the a hyphen '-', and followed by the 'divider' shown as a slash '/' with an integer number, which signifies the number of days in that part of the year (364 divided by a number that should always return another integer number).
+After the year are placed the date terms that signify one ore more full days. There are one or more terms, separated by the a hyphen '-', and followed by the 'divider' shown as a slash '/' with an integer number, which signifies the number of days in that part of the year (364 divided by a number that should always return another integer number).
 
 The first day of the next year on the calendar would thus be:
 
     +1-1/364
  
-After the days are placed the terms that signify one ore more full seconds.
+After the days are placed the time terms that signify one ore more full seconds. They time is separated from the date by an underscore '_', which mimicks a space.
+
+    +1-1-7_1/86400
 
 After the seconds is placed the term that signifies the number of microseconds.
 
+    +1-1-7_1/86400.999
+
 After the microseconds is placed the term that signifies the ISO 8601 equivalent to the full 7Cal notation.
+
+    +1-1-7_1/86400.999*2016-31-12T00:00:01.999Z
