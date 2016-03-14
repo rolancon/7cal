@@ -21,9 +21,13 @@ This way the new 7Cal calendar is always a fully predictable week-based calendar
 
 ## 7Cal Notation
 
-7Cal comes with a standardized datetime notation that has been modelled on the international and Internet datetime notations [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) and [RFC 3339](https://tools.ietf.org/html/rfc3339).
+7Cal comes with a standardized 'datetime' (date and time) notation that has been modeled on the international and Internet datetime notations [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) and [RFC 3339](https://tools.ietf.org/html/rfc3339).
 
-In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, and when left out the term reverts to its default.
+In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, msecs (milliseconds) and annot (annotation) groups, and when left out the group of terms reverts to its default.
+
+The terms in date and time groups are followed by the 'divider', shown as a slash '/' with an integer number, which divides the total number of days in year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
+
+The date and time groups must always have a specific day or second at its lowest granularity, but as long as that holds the year or day can be divided multiple times, where one division follows the other and divides the remainder (the result from the previous division). So the terms are always expressed as a multiple of days or seconds.
 
 7Cal starts with the year. This is always a positive integer preceded with the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. So the start of 7Cal is notated as:
 
@@ -40,7 +44,9 @@ After the year are placed the date terms that signify one ore more full days. Th
 The first day of the next year on the calendar would thus be:
 
     +1-1/364
- 
+
+since there 364 days on the regular year.
+
 After the days are placed the time terms that signify one ore more full seconds. They time is separated from the date by an underscore '_', which mimicks a space.
 
     +1-1-7_1/86400
