@@ -23,23 +23,35 @@ This way the new 7Cal calendar is always a fully predictable week-based calendar
 
 7Cal comes with a standardized 'datetime' (date and time) notation that has been modeled on the international and Internet datetime notations [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) and [RFC 3339](https://tools.ietf.org/html/rfc3339).
 
-In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, msecs (milliseconds) and annot (annotation) groups, and when left out the group of terms reverts to its default.
+In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, 'msecs' (milliseconds) and 'annot' (annotation) groups, and when left out the group of terms reverts to its preset default.
 
-The terms in date and time groups are followed by the 'divider', shown as a slash '/' with an integer number, which divides the total number of days in year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
+7Cal starts with the year. This is always a positive integer preceded by the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. 
+
+7Cal at the date and time of the version of this write-up (see above) makes no specific demands with which date and time on the Gregorian the offset +0 synchronizes, except that it must be on a Sunday at midnight according to the UTC time zone. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
+
+After the year are placed the date terms that signify one ore more full days. There are one or more terms, separated by the a hyphen '-'. After the days are placed the time terms that signify one ore more full seconds. They time is separated from the date by an underscore '_', which mimics a space.
+
+The terms in date and time groups are followed by the 'divider', shown as an integer number preceded by a slash '/', which divides the total number of days in a year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
+
+The number of digits in the term should always be the same as the number of digits in the divider. If need be the the term needs to be padded with 0 or more zeroes '0' on its left side. Furthermore, there are a couple of preset cases where the divider can be left out.
 
 The date and time groups must always have a specific day or second at its lowest granularity, but as long as that holds the year or day can be divided multiple times, where one division follows the other and divides the remainder (the result from the previous division). So the terms are always expressed as a multiple of days or seconds.
 
-7Cal starts with the year. This is always a positive integer preceded with the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. So the start of 7Cal is notated as:
+After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digit, ranging from 000 to 999. 
+
+The 7Cal notation itself can be followed by an annotation (annot). It is separated from the actual 7Cal notation with the multiplication sign '*'. The annotation is the full ISO 8601 notation in the UTC notation (also known as Zulu time), where only the msecs part is optional, only showing when it is shown in the 7Cal notation.
+
+## Specific Examples
+
+So the start of 7Cal is notated as:
 
     +0
-
-7Cal at the date and time of the version of this write-up (see above) makes no specific demands with which date and time on the Gregorian the offset +0 synchronizes, except that it must be on a Sunday at midnight according to the UTC time zone. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
 
 The next year on the 7Cal calendar is then:
 
     +1
 
-After the year are placed the date terms that signify one ore more full days. There are one or more terms, separated by the a hyphen '-', and followed by the 'divider' shown as a slash '/' with an integer number, which signifies the number of days in that part of the year (364 divided by a number that should always return another integer number).
+, and followed by the 'divider' shown as a slash '/' with an integer number, which signifies the number of days in that part of the year (364 divided by a number that should always return another integer number).
 
 The first day of the next year on the calendar would thus be:
 
@@ -47,11 +59,11 @@ The first day of the next year on the calendar would thus be:
 
 since there 364 days on the regular year.
 
-After the days are placed the time terms that signify one ore more full seconds. They time is separated from the date by an underscore '_', which mimicks a space.
+
 
     +1-1-7_1/86400
 
-After the seconds is placed the term that signifies the number of microseconds.
+
 
     +1-1-7_1/86400.999
 
