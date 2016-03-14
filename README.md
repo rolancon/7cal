@@ -29,7 +29,9 @@ In general, 7Cal follows the same principle: it is arranged so that the largest 
 
 7Cal at the datetime of the version of this write-up (see above) makes no specific demands with which datetime on the Gregorian the offset +0 synchronizes, except that it must be on a Sunday at midnight according to the UTC time zone. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
 
-After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'. After the days are placed the time terms that signify one ore more full seconds. The time is separated from the date by an underscore '_', which mimics a space.
+After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'.
+
+After the days are placed the time terms that signify one ore more full seconds, which is separated from the date by an underscore '_', which mimics a space. The time terms are a separated by a colon ':'.
 
 The terms in date and time groups are followed by the 'divider', shown as an integer number preceded by a slash '/', which divides the total number of days in a year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
 
