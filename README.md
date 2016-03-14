@@ -31,7 +31,7 @@ In general, 7Cal follows the same principle: it is arranged so that the largest 
 
 After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'.
 
-After the days are placed the time terms that signify one ore more full seconds, which is separated from the date by an underscore '_', which mimics a space. The time terms are a separated by a colon ':'.
+After the days are placed the time terms that signify one ore more full seconds, which are separated from the date by an underscore '_' that mimics a space. The time terms are a separated by a colon ':'.
 
 The terms in date and time groups are followed by the 'divider', shown as an integer number preceded by a slash '/', which divides the total number of days in a year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
 
@@ -41,7 +41,7 @@ The date and time groups must always have a specific day or second at their lowe
 
 After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digits, ranging from 000 to 999. 
 
-The 7Cal notation itself can be followed by an annotation (annot), that is separated from the actual 7Cal notation with the multiplication '*' sign. The annotation is the complete ISO 8601 notation in the UTC timezone (also known as Zulu time), where nothing but the msecs part is optional, only then showing when it is shown in the 7Cal notation.
+The 7Cal notation itself can be followed by an annotation (annot), which is separated from the actual 7Cal notation with the multiplication '*' sign. The annotation is the complete ISO 8601 notation in the UTC timezone (also known as Zulu time), where nothing but the msecs part is optional, only then showing when it is shown in the 7Cal notation.
 
 ## Specific Examples
 
