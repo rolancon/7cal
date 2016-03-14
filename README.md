@@ -39,7 +39,7 @@ The number of digits in the term should always be the same as the number of digi
 
 The date and time groups must always have a specific day or second at their lowest granularity, but as long as that holds the year or day can be divided multiple times, where one division follows the other and divides the remainder (the result from the previous division). So the terms are always expressed as a multiple of days or seconds.
 
-The date group has another constraint: the year should not be divided beyond a week. Otherwise the wwek-based nature of the calendar would be compromised,
+The date group has another constraint: the year should not be divided beyond a week. Otherwise the week-based nature of the calendar would be compromised,
 
 After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digits, ranging from 000 to 999. 
 
