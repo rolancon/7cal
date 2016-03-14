@@ -39,6 +39,8 @@ The number of digits in the term should always be the same as the number of digi
 
 The date and time groups must always have a specific day or second at their lowest granularity, but as long as that holds the year or day can be divided multiple times, where one division follows the other and divides the remainder (the result from the previous division). So the terms are always expressed as a multiple of days or seconds.
 
+The date group has another constraint: the year should not be divided beyond a week. Otherwise the wwek-based nature of the calendar would be compromised,
+
 After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digits, ranging from 000 to 999. 
 
 The 7Cal notation itself can be followed by an annotation (annot), which is separated from the actual 7Cal notation with the multiplication '*' sign. The annotation is the complete ISO 8601 notation in the UTC timezone (also known as Zulu time), where nothing but the msecs part is optional, only then showing when it is shown in the 7Cal notation.
