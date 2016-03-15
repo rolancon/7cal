@@ -23,32 +23,25 @@ This way the new 7Cal calendar is always a fully predictable week-based calendar
 
 7Cal comes with a standardized 'datetime' (date and time) notation that has been modeled on the international and Internet datetime notations [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) and [RFC 3339](https://tools.ietf.org/html/rfc3339).
 
-In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, 'msecs' (milliseconds) and 'annot' (annotation) groups, and when left out the group of terms reverts to its preset default (the annot has no default, it is just the reflection of the 7Cal notation).
+In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, 'msecs' (milliseconds) and 'annot' (annotation) groups, and when left out the group of terms reverts to its preset default. The default values for the 7Cal terms are the first day of the year for the date, the first second of the day for the time and the first millisecond of the second for the msecs. The annot(ation) has no default, it is just the reflection of the 7Cal notation.
 
-7Cal starts with the year. This is always a positive integer preceded by the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. 
+7Cal starts with the year. This is always a positive integer preceded by the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar.
 
 7Cal at the datetime of the version of this write-up (see above) makes no specific demands with which datetime on the Gregorian the offset +0 synchronizes, except that it must be on a Sunday at midnight according to the UTC time zone. The author himself prefers to let 7Cal +0 start at 2017-01-01T00:00:00Z on the Gregorian calendar.
 
-After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'.
+After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'. Dates are 1-index based, meaning the lowest value is 1.
 
-After the days are placed the time terms that signify one ore more full seconds, which are separated from the date by an underscore '_' that mimics a space. The time terms are a separated by a colon ':'.
+After the days are placed the time terms that signify one ore more full seconds, which are separated from the date by an underscore '_' that mimics a space. The time terms are a separated by a colon ':'. Times are 0-index based, meaning the lowest value is 0.
 
-The terms in date and time groups are followed by the 'divider', shown as an integer number preceded by a slash '/', which divides the total number of days in a year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division.
+The terms in date and time groups are followed by the 'divider', shown as an integer number preceded by a slash '/', which divides the total number of days in a year (364) or total number of seconds in a day (86400). The term then signifies the total number of days or seconds within that division. The division should always return another integer number.
 
 The number of digits in the term should always be the same as the number of digits in the divider. If needed the term must be padded with 0 or more zeroes '0' on its left side. Furthermore, there are a couple of predefined cases where the divider can be left out.
 
 The date and time groups must always have a specific day or second at their lowest granularity, but as long as that holds the year or day can be divided multiple times, where one division follows the other and divides the remainder (the result from the previous division). So the terms are always expressed as a multiple of days or seconds.
 
-The date group has another constraint: the year should not be divided beyond a week. Otherwise the week-based nature of the calendar would be compromised,
-
-After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digits, ranging from 000 to 999. 
+After the seconds is placed the term that signifies the number of milliseconds (msecs). They are separated from time in seconds with a dot '.'. The msecs are always expressed as 3 digits, ranging from 000 to 999.
 
 The 7Cal notation itself can be followed by an annotation (annot), which is separated from the actual 7Cal notation with the multiplication '*' sign. The annotation is the complete ISO 8601 notation in the UTC timezone (also known as Zulu time), where nothing but the msecs part is optional, only then showing when it is shown in the 7Cal notation.
-
-(divided by a number that should always return another integer number)
-The default date terms are the first day, second or msec in its specific period.
-dates are 1-index based
-times are 0-index based
 
 ## Examples
 
@@ -73,7 +66,7 @@ It contains a term (001) followed by a divider (/364), since there are 364 days 
 The first day of the first week of the first year (which is the same date again) is expressed as follows:
 
     +0-01/52-1/7
-  
+ 
 which contains 2 terms after the year. The 1/52 indicates the first week (with 1 in the term) of the year (with 52 in the divider since are there 52 weeks in the year). This is followed by the subdivision 1/7: the first day (1) in the week (the 7 divides the week that results from the previous divider into seven days). Not again that the first term is padded with a zero so that it will have the same length as the divider.
 
 Note that year is 0-based offset whereas the date is a 1-based index.
@@ -81,6 +74,7 @@ Note that year is 0-based offset whereas the date is a 1-based index.
 Because expressing days, weeks and weekdays are so common the dividers can be left out and the terms will have implicit defaults:
 
     +0-001
+
     +0-01-1
 
 There is no cause for ambiguity because days are always 3 digits (001-364), weeks always 2 digits (01-52) and days always 1 digit (1-7).
