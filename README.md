@@ -45,23 +45,32 @@ After the seconds is placed the term that signifies the number of milliseconds (
 
 The 7Cal notation itself can be followed by an annotation (annot), which is separated from the actual 7Cal notation with the multiplication '*' sign. The annotation is the complete ISO 8601 notation in the UTC timezone (also known as Zulu time), where nothing but the msecs part is optional, only then showing when it is shown in the 7Cal notation.
 
-## Specific Examples
+(divided by a number that should always return another integer number)
+The default date terms are the first day, second or msec in its specific period.
 
-So the start of 7Cal is notated as:
+## Examples
+
+The 'zeropoint' of 7Cal is notated as 1 term:
 
     +0
+
+which is the start of the very first year on the calendar. The date, time and msecs terms are left out, so they revert to their defaults: the first day of the year, the first second of the first day and 0 msecs.
 
 The next year on the 7Cal calendar is then:
 
     +1
 
-, and followed by the 'divider' shown as a slash '/' with an integer number, which signifies the number of days in that part of the year (364 divided by a number that should always return another integer number).
+The first day of the first year on the calendar can also be expressed more explicitly as follows, which contains a second term:
 
-The first day of the next year on the calendar would thus be:
+    +0-1/364
 
-    +1-1/364
+It contains a term (1) followed by a divider (/364), since there 364 days in the regular year (in the divider) and the 1st day in that period is 1 (the term).
 
-since there 364 days on the regular year.
+The first day of the first week of the first year (whic is the same date again) is expressed as follows:
+
+    +0-1/52-1/7
+    
+which contains 2 terms after the year: 
 
 
 
