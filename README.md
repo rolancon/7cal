@@ -47,14 +47,18 @@ The 7Cal notation itself can be followed by an annotation (annot), which is sepa
 
 (divided by a number that should always return another integer number)
 The default date terms are the first day, second or msec in its specific period.
+dates are 1-index based
+times are 0-index based
 
 ## Examples
 
-The 'zeropoint' of 7Cal is notated as 1 term:
+### Year and date notation
+
+The notation of 7Cal's 'zero point' is 1 term:
 
     +0
 
-which is the start of the very first year on the calendar. The date, time and msecs terms are left out, so they revert to their defaults: the first day of the year, the first second of the first day and 0 msecs.
+which marks the start of the very first year on the calendar. The date, time and msecs terms are left out, so they revert to their defaults: the first day of the year, the first second of the first day plus 0 msecs.
 
 The next year on the 7Cal calendar is then:
 
@@ -62,24 +66,37 @@ The next year on the 7Cal calendar is then:
 
 The first day of the first year on the calendar can also be expressed more explicitly as follows, which contains a second term:
 
-    +0-1/364
+    +0-001/364
 
-It contains a term (1) followed by a divider (/364), since there 364 days in the regular year (in the divider) and the 1st day in that period is 1 (the term).
+It contains a term (001) followed by a divider (/364), since there are 364 days in the regular year (as shown in the divider), and the 1st day in that period is day 1 (as shown in the term). Not that the term is padded with zeroes so that it will have the same length as the divider.
 
-The first day of the first week of the first year (whic is the same date again) is expressed as follows:
+The first day of the first week of the first year (which is the same date again) is expressed as follows:
 
-    +0-1/52-1/7
-    
-which contains 2 terms after the year: 
+    +0-01/52-1/7
+   
+which contains 2 terms after the year. The 1/52 indicates the first week (with 1 in the term) of the year (with 52 in the divider since are there 52 weeks in the year). This is followed by the subdivision 1/7: the first day (1) in the week (the 7 divides the week that results from the previous divider into seven days). Not again that the first term is padded with a zero so that it will have the same length as the divider.
 
+Note that year is 0-based offset whereas the date is a 1-based index.
 
+Because expressing days, weeks and weekdays are so common the dividers can be left out and the terms will have implicit defaults:
+
+    +0-001
+    +0-01-1
+
+These is no cause for ambiguity because days are always 3 digits (001-364), weeks always 2 digits (01-52) and days always 1 digit (1-7).
+
+If you would like to express any another division of the year, let's say to divide the years in 13 'months' (of 4 weeks or 28 days each - so it would probably be more correct to call them 'moons') the divider can never be left. Therefore to express the first day of the first week of the first month it should always be:
+
+    +0-1/13-1/4-1/7
+
+### Time and msecs notation
+
+The time is expressed in a similar manner as the date.
 
     +1-1-7_1/86400
-
-
-
     +1-1-7_1/86400.999
 
 After the microseconds is placed the term that signifies the ISO 8601 equivalent to the full 7Cal notation.
 
     +1-1-7_1/86400.999*2016-31-12T00:00:01.999Z
+
