@@ -73,7 +73,7 @@ It contains a term (001) followed by a divider (/364), since there are 364 days 
 The first day of the first week of the first year (which is the same date again) is expressed as follows:
 
     +0-01/52-1/7
-   
+  
 which contains 2 terms after the year. The 1/52 indicates the first week (with 1 in the term) of the year (with 52 in the divider since are there 52 weeks in the year). This is followed by the subdivision 1/7: the first day (1) in the week (the 7 divides the week that results from the previous divider into seven days). Not again that the first term is padded with a zero so that it will have the same length as the divider.
 
 Note that year is 0-based offset whereas the date is a 1-based index.
@@ -83,20 +83,47 @@ Because expressing days, weeks and weekdays are so common the dividers can be le
     +0-001
     +0-01-1
 
-These is no cause for ambiguity because days are always 3 digits (001-364), weeks always 2 digits (01-52) and days always 1 digit (1-7).
+There is no cause for ambiguity because days are always 3 digits (001-364), weeks always 2 digits (01-52) and days always 1 digit (1-7).
 
-If you would like to express any another division of the year, let's say to divide the years in 13 'months' (of 4 weeks or 28 days each - so it would probably be more correct to call them 'moons') the divider can never be left. Therefore to express the first day of the first week of the first month it should always be:
+If you would like to express any another division of the year, let's say to divide the years in 13 'months' of 4 weeks or 28 days each (it would probably be more correct to call them 'moons') the divider can never be left out. Therefore to express the first day of the first week of the first month it should always be:
 
-    +0-1/13-1/4-1/7
+    +0-01/13-1/4-7
 
-### Time and msecs notation
+### Time, msecs and annot notation
 
-The time is expressed in a similar manner as the date.
+The time is expressed in a similar manner as the date, although times are 0-index based. The time is a day divided up to a second. The first second of the (first) day is:
 
-    +1-1-7_1/86400
-    +1-1-7_1/86400.999
+    +0-01-1_00001/86400
 
-After the microseconds is placed the term that signifies the ISO 8601 equivalent to the full 7Cal notation.
+The part after the underscore '_' is the time. This one has 86400 in the divider (after the '/'), because 1 day has 24 hours times 60 minutes times 60 seconds is 86400 seconds, of which the (zero-padded) 1 in the term is the 1st second.
 
-    +1-1-7_1/86400.999*2016-31-12T00:00:01.999Z
+The show the first second of the first minute of the first hour on a 24-hour clock we write:
 
+    +0-01-1_00/24:00/60:00/60
+
+Because hours, minutes and seconds are so commonly used, and because the 24-hour clock is the standard with international Internet datetimes, the divider can be left out and the time will then have an implicit default of 24 hours, 60 minutes and 60 seconds:
+
+    +0-01-1_00:00:00
+
+To write the same time on a 12-hour clock we have to insert another division at the front that first divides the day in an AM and a PM part:
+
+    +0-01-1_0/1:00/12:00:00
+
+Hours, minutes and seconds always have 2 digits, but since one always precedes the other in a preset order no ambiguity should arise.
+
+After the time comes the msecs term. The msecs has no divider notation.
+Since 000 is the default it can always be left out as shown above. To show the zero point datetime with explicit 000 msecs:
+
+    +0-01-1_00:00:00.000
+
+The upper range for msecs is 999:
+
+    +0-01-1_00:00:00.999
+
+After the microseconds is placed the annot term that signifies the ISO 8601 equivalent to the full 7Cal notation. The zero point notation once again:
+
+    +0-01-1_00:00:00.000*2017-01-01T00:00:00.000Z
+
+The ISO datetime should always be written out in full. Only the msecs part is optional, and only then when it is also missing from the 7Cal notation:
+
+    +0-01-1_00:00:00*2017-01-01T00:00:00Z
