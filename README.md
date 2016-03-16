@@ -83,6 +83,10 @@ If you would like to express any another division of the year, let's say to divi
 
     +0-01/13-1/4-7
 
+In another example, let's divide the year in 4 quarters (or 'seasons'):
+
+    +0-1/4-01/13-7
+
 ### Time, msecs and annot notation
 
 The time is expressed in a similar manner as the date, although times are 0-index based. The time is a day divided up to a second. The first second of the (first) day is:
@@ -101,7 +105,7 @@ Because hours, minutes and seconds are so commonly used, and because the 24-hour
 
 To write the same time on a 12-hour clock we have to insert another division at the front that first divides the day in an AM and a PM part:
 
-    +0-01-1_0/1:00/12:00:00
+    +0-01-1_0/2:00/12:00:00
 
 Hours, minutes and seconds always have 2 digits, but since one always precedes the other in a preset order no ambiguity should arise.
 
