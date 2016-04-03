@@ -71,13 +71,11 @@ which contains 2 terms after the year. The 1/52 indicates the first week (with 1
 
 Note that year is 0-based offset whereas the date is a 1-based index.
 
-Because expressing days, weeks and weekdays are so common the dividers can be left out and the terms will have implicit defaults:
-
-    +0-001
+Because expressing weeks and weekdays is so natural to 7Cal the dividers can be left out and the terms will have implicit defaults:
 
     +0-01-1
 
-There is no cause for ambiguity because days are always 3 digits (001-364), weeks always 2 digits (01-52) and days always 1 digit (1-7).
+There is no cause for ambiguity because weeks always 2 digits (01-52) and days always 1 digit (1-7).
 
 If you would like to express any another division of the year, let's say to divide the years in 13 'months' of 4 weeks or 28 days each (it would probably be more correct to call them 'moons') the divider can never be left out. Therefore to express the first day of the first week of the first month it should always be:
 
@@ -91,15 +89,15 @@ In another example, let's divide the year in 4 quarters (or 'seasons'):
 
 The time is expressed in a similar manner as the date, although times are 0-index based. The time is a day divided up to a second. The first second of the (first) day is:
 
-    +0-01-1_00001/86400
+    +0-01-1_00000/86400
 
 The part after the underscore '_' is the time. This one has 86400 in the divider (after the '/'), because 1 day has 24 hours times 60 minutes times 60 seconds is 86400 seconds, of which the (zero-padded) 1 in the term is the 1st second.
 
-The show the first second of the first minute of the first hour on a 24-hour clock we write:
+To show the first second of the first minute of the first hour on a 24-hour clock we write:
 
     +0-01-1_00/24:00/60:00/60
 
-Because hours, minutes and seconds are so commonly used, and because the 24-hour clock is the standard with international Internet datetimes, the divider can be left out and the time will then have an implicit default of 24 hours, 60 minutes and 60 seconds:
+Because hours, minutes and seconds are so commonly used, and because the 24-hour clock is the standard with international Internet datetimes, the dividers can be left out and the time will then have an implicit default of 24 hours, 60 minutes and 60 seconds:
 
     +0-01-1_00:00:00
 
