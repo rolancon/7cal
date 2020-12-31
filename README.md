@@ -25,7 +25,7 @@ This way the new 7Cal calendar is always a fully predictable week-based calendar
 
 In general, 7Cal follows the same principle: it is arranged so that the largest temporal term (the year) is placed to the left and each successively smaller term is placed to the right of the previous term. Any other term but the year is optional, the others terms are grouped into date, time, 'msecs' (milliseconds) and 'annot' (annotation) groups, and when left out the group of terms reverts to its preset default. The default values for the 7Cal terms are the first day of the year for the date, the first second of the day for the time and the first millisecond of the second for the msecs. The annot(ation) has no default, it is just the reflection of the 7Cal notation.
 
-7Cal starts with the year. This is always a positive integer preceded by the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. The datetime on the Gregorian calendar that synchronizes with the +0 start offset of 7cal is 2000-01-02T00:00:00Z.
+7Cal starts with the year. This is always a positive integer preceded by the plus '+' sign, indicating an offset from a start datetime that synchronizes it with the Gregorian calendar. The datetime on the Gregorian calendar that synchronizes with the +0 start offset of 7Cal is 2000-01-02T00:00:00Z.
 
 After the year are placed the date terms that signify one ore more full days. These are one or more terms, separated by a hyphen '-'. Dates are 1-index based, meaning the lowest value is 1.
 
