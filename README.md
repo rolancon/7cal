@@ -45,7 +45,7 @@ The 7Cal notation itself can be followed by an annotation (annot), which is sepa
 
 7Cal stays in synch with the Gregorian calendar, in which every 400 years 3 leap days are cancelled.
 
-Every 2800 years (7 blocks of 400 years) the Gregorian calendar cancels 21 leap days (7 * 3). This amounts to 3 full weeks of 7 days, spread over 100 blocks of 28 years. 7Cal cancels these 3 weeks as follows: over the course of 5 blocks of 20 times 28 years (5 blocks of 560 years), which can be thought of as the workdays of the week (Monday thru Friday), on the first, third and fifth 'workday' (Monday = 560 years till Friday = 2800 years), one leap week is cancelled. The leap week which is cancelled is the one in the middle of the cycle of 28 years (the 'Wednesday' of that cycle), so the leap week after 16 years from the start of the cycle of 28 years, or 548 years into the cycle of 560 years.
+Every 2800 years (7 blocks of 400 years) the Gregorian calendar cancels 21 leap days (7 * 3). This amounts to 3 full weeks of 7 days, spread over 100 blocks of 28 years. 7Cal cancels these 3 weeks as follows: over the course of 5 blocks of 20 times 28 years (5 blocks of 560 years), which can be thought of as the workdays of the week (Monday thru Friday), on the first, third and fifth 'workday' (Monday = 560 years till Friday = 2800 years), one leap week is cancelled. The leap week which is cancelled is the one in the middle of the cycle of 28 years (the 'Wednesday' of that cycle), i.e., the leap week after 16 years from the start of the cycle of 28 years, or 548 years into the cycle of 560 years.
 
 ## Examples
 
